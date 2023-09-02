@@ -9,7 +9,7 @@ class Grower:
         self._x = x
         self._y = y
     
-    def get_pos(self, x, y):
+    def get_pos(self):
         return self._x, self._y
 
 class BugWorld:
@@ -33,11 +33,12 @@ class BugWorld:
             )
         
     def iterate_simulation(self):
-        g_positions = [g.get_pos() for g in self.growers]
-        print(g_positions.shape)
-        g_positions += np.random.uniform(0,1, (len(self.growers), 2))
-
-        # for g in growers:
-        #     g_x, g_y = g.get_pos()
-        #     g_x += 
-        # pass
+        for g in self.growers:
+            oldx, oldy = g.get_pos()
+            # move to random point within a 2x2 square centered on starting position
+            newx = oldx + np.random.uniform(-1,1)
+            newy = oldy + np.random.uniform(-1,1)
+            g.set_pos(newx,newy)
+        # g_positions = [g.get_pos() for g in self.growers]
+        # print(g_positions)
+        # g_positions += np.random.uniform(0,1, (len(self.growers), 2))

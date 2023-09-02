@@ -1,5 +1,5 @@
 from .interface_widget import InterfaceWidget
-from ..simulation import BugWorld
+from ..simulation.bugworld import BugWorld
 
 from PyQt6.QtWidgets import (
     QMainWindow,
